@@ -4,6 +4,7 @@ namespace Tungsten\FootJob;
 
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
+use pocketmine\Server;
 
 class FootJob extends PluginBase implements Listener
 {
@@ -14,7 +15,7 @@ class FootJob extends PluginBase implements Listener
     public function onEnable()
     {
         self::$instance = $this;
-
+        Server::getInstance()->loadLevel($config["level"]);
         #$this->getServer()->getPluginManager()->registerEvents($this, $this);
         $cmds = new Commands($this);
         $this->getServer()->getCommandMap()->register("footjob", $cmds);

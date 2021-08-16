@@ -63,6 +63,7 @@ class addArea implements Listener
         $config->setNested("$areaName.level", $player->getLevel()->getName());
         $config->save();
 
+        Server::getInstance()->loadLevel($config["level"]);
         HandlerList::unregisterAll($this);
     }
 
